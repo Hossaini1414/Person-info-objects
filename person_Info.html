@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Person Info - Object</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white p-6 rounded-xl shadow-xl w-full max-w-md">
+    <h3 class="text-xl font-bold text-center text-blue-600 mb-4">
+      👤 Person Information
+    </h3>
+
+    <div class="space-y-4">
+      <input 
+        type="text" 
+        id="name" 
+        placeholder="Enter your name"
+        class="w-full border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+      >
+      <input 
+        type="number" 
+        id="age" 
+        placeholder="Enter your age"
+        class="w-full border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+      >
+      <input 
+        type="text" 
+        id="city" 
+        placeholder="Enter your city"
+        class="w-full border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+      >
+
+      <button 
+        onclick="showInfo()" 
+        class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
+      >
+        Show Info
+      </button>
+
+      <div 
+        id="result" 
+        class="mt-4 p-4 bg-gray-50 rounded-md text-gray-800 font-medium border"
+      ></div>
+         <button 
+        onclick="clearInfo()" 
+        class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition"
+      >
+        Clear Info 
+      </button>
+    </div>
+  </div>
+
+  <script>
+      let name;
+      let age;
+      let city;
+    function showInfo() {
+    let name = document.getElementById("name").value.trim();
+    let age = document.getElementById("age").value.trim();
+    let city = document.getElementById("city").value.trim();
+      let person = {
+        name: name,
+        age: age,
+        city: city,
+      };
+    if(name == "" && age === "" && city ==""){
+        alert("please enter your name, age and city");
+        return;
+    } else {
+        let output = `
+        Name: ${person.name} <br>
+        Age: ${person.age} <br>
+        City: ${person.city}
+      `;
+      document.getElementById("result").innerHTML = output;
+    }
+        
+    }
+    
+    function clearInfo(){
+      document.getElementById("result").innerHTML = "";
+        document.getElementById("name").value = "";
+    document.getElementById("age").value ="";
+    document.getElementById("city").value ="";
+    }
+  </script>
+</body>
+</html>
